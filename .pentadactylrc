@@ -1,43 +1,36 @@
-﻿"1.0b5 (created: 2011/01/19 03:34:56)
-
-loadplugins '\.(js|penta)$'
-
+﻿
 " Options
-set nextpattern=\s*下一页|下一张|下一篇|下一頁|下页|后页\s*,^\bnext\b,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
-set previouspattern=\s*上一页|上一张|上一篇|上一頁|上页|前页\s*,^\bprev|previous\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
-set mapleader=','
+set nextpattern='\s*下一页|下一张|下一篇|下一頁|下页|后一页|后页\s*','^Next [>»]','^Next »','\bnext\b',^>$,'^(>>|»)$','^(>|»)','(>|»)$','\bmore\b'
+set previouspattern='\s*上一页|上一张|上一篇|上一頁|上页|前一页|前页\s*','[<«] Prev$','« Prev$','\bprev(ious)\b',^<$,'^(<<|«)$','^(<|«)','(<|«)$'
 set titlestring='Mozilla Firefox'
 
 " 再把页面浏览、标签页跳转和历史跳转绑定到顺手的地方，右手万岁！
-noremap [ [[
-noremap ] ]]
-noremap j 3j
-noremap k 3k
-noremap J <C-d>
-noremap K <C-u>
-noremap h gT
-noremap l gt
-noremap H 3h
-noremap L 3l
-noremap , <C-o>
-noremap . <C-i>
-noremap <C-H> :tabmove! -1<CR>
-noremap <C-L> :tabmove! +1<CR>
-noremap gi gi<C-e>
+map -builtin j 3j
+map -builtin k 3k
+map -builtin J <C-d>
+map -builtin K <C-u>
+map -builtin h gT
+map -builtin l gt
+map -builtin H 3h
+map -builtin L 3l
+map -builtin , :back<CR>
+map -builtin . :forward<CR>
+map -builtin <C-H> :tabmove! -1<CR>
+map -builtin <C-L> :tabmove! +1<CR>
+map -builtin gi gi<C-e>
+
 map U :ju<CR>
-map <silent> <leader>n :nohlfind<CR>
 map e :history -sort -date<CR>
-map <silent> <leader>r :restart<CR>
-map <silent> <leader>g :googl<CR>
-noremap <silent> <leader>eu :set encoding=UTF-8<CR>
-noremap <silent> <leader>eg :set encoding=GB2312<CR>
+map ,n :nohlfind<CR>
+map ,r :restart<CR>
+map ,eu :set encoding=UTF-8<CR>
+map ,eg :set encoding=GB2312<CR>
 
 "surround com and net可以直接先输入网站名,再用<CTRL>+<ENTER>快捷输入.com/.net
-cnoremap <S-Return> <C-A><A-Right><Right>www.<C-E>.org<CR>
-cnoremap <C-Return> <C-A><A-Right><Right>www.<C-E>.com<CR>
+cmap -builtin <S-Return> <C-A><A-Right><Right>www.<C-E>.org<CR>
+cmap -builtin <C-Return> <C-A><A-Right><Right>www.<C-E>.com<CR>
 
 " PassThrough gmail and greader
 autocmd LocationChange music\.google\.com|mail\.google\.com|www\.google\.com\/reader|www\.google\.com\/calendar|https?://twitter\.com -js modes.set(modes.PASS_THROUGH)
 set strictfocus=www.google.com:despotic,twitter.com:despotic
 
-style -name=commandline-ime chrome://* #dactyl-commandline-command input {ime-mode: inactive;}

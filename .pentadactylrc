@@ -34,3 +34,5 @@ cmap -builtin <C-Return> <C-A><A-Right><Right>www.<C-E>.com<CR>
 autocmd LocationChange music\.google\.com|mail\.google\.com|www\.google\.com\/reader|www\.google\.com\/calendar|https?://twitter\.com -js modes.set(modes.PASS_THROUGH)
 set strictfocus=www.google.com:despotic,twitter.com:despotic
 
+style -name commandline-ime chrome://* #dactyl-commandline-command input {ime-mode: inactive;}
+

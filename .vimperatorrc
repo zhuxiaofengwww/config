@@ -1,0 +1,43 @@
+﻿
+"******* Options ******
+
+set nextpattern='\s*下一页|下一张|下一篇|下一頁|下页|后一页|后页\s*','^Next [>»]','^Next »','\bnext\b',^>$,'^(>>|»)$','^(>|»)','(>|»)$','\bmore\b'
+set previouspattern='\s*上一页|上一张|上一篇|上一頁|上页|前一页|前页\s*','[<«] Prev$','« Prev$','\bprev(ious)\b',^<$,'^(<<|«)$','^(<|«)','(<|«)$'
+set titlestring='Mozilla Firefox'
+
+autocmd LocationChange .* js modes.passAllKeys = /(music\.google\.com|mail\.google\.com|www\.google\.com\/reader|www\.google\.com\/calendar|twitter\.com)/.test(buffer.URL)
+autocmd LocationChange .* echo ""
+
+style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;} 
+
+"set strictfocus=www.google.com:despotic,twitter.com:despotic
+
+"******* Mappings ******
+
+noremap j 3j
+noremap k 3k
+noremap H 3h
+noremap L 3l
+map J <C-d>
+map K <C-u>
+map h gT
+map l gt
+map <C-H> :tabmove! -1<CR>
+map <C-L> :tabmove! +1<CR>
+
+map , :back<CR>
+map . :forward<CR>
+
+noremap gi gi<C-e>
+map e :history<CR>
+map ,n :nohlsearch<CR>
+map ,r :restart<CR>
+map ,eu :set encoding=UTF-8<CR>
+map ,eg :set encoding=GB2312<CR>
+
+cmap <S-Return> <C-A><A-Right><Right>www.<C-E>.org<CR>
+cmap <C-Return> <C-A><A-Right><Right>www.<C-E>.com<CR>
+
+map x thttp://dict.cn/
+map c thttp://translate.google.com/#auto/zh-CN/
+

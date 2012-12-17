@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/michael/Sites/milee_v2/application/modules/admin/views/scripts/shop'
-let g:netrw_dirhist_2='/Users/michael/Downloads/sencha-touch-2.0.0-gpl/examples/kitchensink'
-let g:netrw_dirhist_3='/Users/michael/Downloads/sencha-touch-2.0.0-gpl/examples/oreilly/app/view/about'
-let g:netrw_dirhist_4='/Users/michael/Downloads/sencha-touch-2.0.0-gpl/examples/toolbars'
-let g:netrw_dirhist_5='/Users/michael/Downloads/sencha-touch-2.0.0-gpl/examples/navigationview/app'
-let g:netrw_dirhist_6='/Users/michael/Downloads/sencha-touch-2.0.0-gpl/examples/oreilly'

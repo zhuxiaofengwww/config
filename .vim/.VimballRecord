@@ -1,3 +1,0 @@
-winmanager.vba: call delete('/Users/michael/.vim/doc/winmanager.txt')|call delete('/Users/michael/.vim/plugin/start.gnome')|call delete('/Users/michael/.vim/plugin/start.kde')|call delete('/Users/michael/.vim/plugin/winfileexplorer.vim')|call delete('/Users/michael/.vim/plugin/winmanager.vim')|call delete('/Users/michael/.vim/plugin/wintagexplorer.vim')
-checksyntax.vba: call delete('/Users/michael/.vim/doc/checksyntax.txt')|call delete('/Users/michael/.vim/plugin/checksyntax.vim')|call delete('/Users/michael/.vim/autoload/checksyntax.vim')
-supertab.vba: call delete('/Users/michael/.vim/doc/supertab.txt')|call delete('/Users/michael/.vim/plugin/supertab.vim')

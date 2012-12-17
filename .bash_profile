@@ -4,6 +4,8 @@ export PATH="/usr/local/mysql/bin:$PATH"
 
 alias cdd='cd ~/Downloads/'
 alias cdb='cd ~/Dropbox/'
+alias cdw='cd ~/Dropbox/Work'
+alias cds='cd ~/Dropbox/Study'
 alias ..='cd ..'
 
 alias grep='grep --color=auto'
@@ -24,3 +26,6 @@ alias pht='python -m SimpleHTTPServer'
 alias p8='ping 8.8.8.8'
 alias gst='git status'
 
+function fp() {
+    echo `pwd`/"$1"
+}

@@ -11,8 +11,6 @@ endf
 
 " Set Mapleader 
 let mapleader = ","
-let g:mapleader = ","
-let maplocalleader = ","
 
 " Sets how many lines of history VIM can remember
 set history=500
@@ -33,11 +31,8 @@ set t_vb=
 " Show line number and ruler
 set number
 set ruler
-set rulerformat=%15(%c%V\ %p%%%)
 
 " Status bar
-"set cmdheight=1 
-"set stl=\ [File]\ %F%m%r%h%y[%{&fileformat},%{&fileencoding}]\ %w\ \ [PATH]\ %r%{GetPWD()}%h\ %=\ [Line]%l/%L\ %=\[%P]
 set laststatus=2   " Always show the statusline
 set wildmenu       " Enable command line completion
 
@@ -45,9 +40,10 @@ set wildmenu       " Enable command line completion
 set hlsearch  " Highlight search things
 set magic     " Set magic on, for regular expressions
 set showmatch " Show matching bracets when text indicator is over them
-set mat=2     " How many tenths of a second to blink
+set matchtime=2     " How many tenths of a second to blink
 set incsearch
 set ignorecase
+set smartcase
 
 " Tab
 set tabstop=4
@@ -75,7 +71,7 @@ set mouse=a
 
 " No Backup
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Omni Complete
@@ -84,8 +80,7 @@ set completeopt=menuone,menu,longest
 
 " Code Folding
 set foldmethod=indent
-" Default no folding
-set foldlevel=99
+set foldlevel=99 " Default no folding
 
 
 
@@ -94,7 +89,7 @@ set foldlevel=99
 " ===========
 if has("multi_byte")
     set encoding=utf-8
-    set fencs=utf-8,gbk,chinese,latin1
+    set fileencodings=utf-8,gbk,chinese,latin1
     set formatoptions+=mM
     set nobomb " No Unicode BOM
 
@@ -153,13 +148,13 @@ if has('gui_running')
 
         func! FullScreenEnter()
             set lines=999 columns=999
-            set fu
+            set fullscreen
         endf
 
         func! FullScreenLeave()
             let &lines=s:lines
             let &columns=s:columns
-            set nofu
+            set nofullscreen
         endf
 
         func! FullScreenToggle()
@@ -170,11 +165,11 @@ if has('gui_running')
             endif
         endf
 
-        set guioptions-=m
-        set guioptions-=T
-
         " Toggle to Fullscreen
         map <leader>ff  :call FullScreenToggle()<CR>
+
+        set guioptions-=m
+        set guioptions-=T
 
         " Set input method off
         set imdisable
@@ -190,30 +185,35 @@ if has("autocmd")
     filetype plugin indent on
 
     " Set fileformat to UNIX
-    au FileType php,javascript,phtml,html,css,python,vim,vimwiki set fileformat=unix
+    autocmd FileType php,javascript,phtml,html,css,python,vim,vimwiki set fileformat=unix
+
+    " C++ Support
+    "autocmd FileType cpp set tags+=~/.vim/tags/cpp
+    set tags+=~/.vim/tags/cpp
 
     " Python Support
-    au FileType python set makeprg="python -u %"
+    autocmd FileType python set makeprg="python -u %"
+    autocmd FileType python imap <silent> <buffer> . .<C-X><C-O>
 
     " JavaScript Support
-    au BufRead,BufNewFile *.js set filetype=javascript
-    au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    au FileType tpl,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss = 1
+    autocmd BufRead,BufNewFile *.js set filetype=javascript
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType tpl,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss = 1
 
     " PHP Support
-    au BufNewFile,BufRead *.php set filetype=php
-    au FileType php set omnifunc=phpcomplete#CompletePHP
+    autocmd BufNewFile,BufRead *.php set filetype=php
+    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     let php_sql_query=1
     let php_htmlInStrings=1
 
     " CSS3 Syntax Highlight
-    au BufRead,BufNewFile *.css set filetype=css syntax=css3
+    autocmd BufRead,BufNewFile *.css set filetype=css syntax=css3
 
     " HTML Syntax Highlight
-    au BufNewFile,BufRead *.htm set filetype=html
-    au BufNewFile,BufRead *.html set filetype=html
-    au BufNewFile,BufRead *.phtml set filetype=html
-    au BufNewFile,BufRead *.tpl set filetype=html
+    autocmd BufNewFile,BufRead *.htm set filetype=html
+    autocmd BufNewFile,BufRead *.html set filetype=html
+    autocmd BufNewFile,BufRead *.phtml set filetype=html
+    autocmd BufNewFile,BufRead *.tpl set filetype=html
 endif
 
 
@@ -247,6 +247,11 @@ Bundle 'pangloss/vim-javascript.git'
 Bundle 'uguu-org/vim-matrix-screensaver.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'winmanager--Fox'
+Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'indexer.tar.gz'
+Bundle 'vimprj'
+Bundle 'DfrankUtil'
 
 
 " Flake8
@@ -259,8 +264,6 @@ map <silent><leader>b :TagbarToggle<CR>
 
 
 " Taglist
-set tags=./tags
-
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_php_settings = 'php;c:class;f:function;d:constant'
 let Tlist_File_Fold_Auto_Close = 1
@@ -315,23 +318,22 @@ let Grep_Default_Filelist = '*.cpp *.h *.c *.php *.js *.css *.html *.phtml *.py 
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_MayCompleteDot = 1
-let OmniCpp_MayCompleteArrow = 1
-let OmniCpp_MayCompleteScope = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
 highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
 
-let g:neocomplcache_enable_at_startup = 1
 
 
 " =================
 " Keyboard Bindings
 " =================
-map <silent> <F8> :A<CR>
-map <silent> <F11> :cw<CR> 
 map <silent> <leader>f :Grep<CR>
 map <silent> <leader>M :Matrix<CR>
 map <silent> <leader>m :make<CR>:cw<CR>
@@ -341,6 +343,10 @@ map <silent> <leader>q :qall<CR>
 map <silent> <leader>y "+y
 map <silent> <leader>p "+p
 map <silent> <leader>cd :cd %:p:h<CR>
+map <silent> <leader>dd :bdelete<CR>
+map <silent> <leader>ef :CtrlP<CR>
+map <silent> <leader>et :CtrlPBuffer<CR>
+map <silent> <leader>er :CtrlPMRU<CR>
 map <C-p> :cp<CR>
 map <C-n> :cn<CR>
 map J <C-d>
@@ -349,3 +355,4 @@ map H <C-S-Tab>
 map L <C-Tab>
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "j"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "k"
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"

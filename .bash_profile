@@ -20,6 +20,7 @@ alias duh='du -h -d 1'
 alias mkdir='mkdir -p'
 
 alias sshm='ssh -p 11024 -4 root@micbase.com'
+alias sshp='ssh pi@192.168.1.148'
 alias sshmi='ssh -p 32957 -4 root@milee.me'
 
 alias pht='python -m SimpleHTTPServer'

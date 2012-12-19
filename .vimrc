@@ -330,6 +330,12 @@ highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
 
 
+" CtrlP
+let g:ctrlp_map = '<C-o>'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+
 
 " =================
 " Keyboard Bindings

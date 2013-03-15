@@ -22,10 +22,13 @@ alias mkdir='mkdir -p'
 alias sshm='ssh -p 11024 -4 root@micbase.com'
 alias sshp='ssh pi@192.168.1.148'
 alias sshmi='ssh -p 32957 -4 root@milee.me'
+alias ssh4='ssh root@parkinson-16.wot.eecs.northwestern.edu'
 
 alias pht='python -m SimpleHTTPServer'
 alias p8='ping 8.8.8.8'
+alias pingp='ping 192.168.1.148'
 alias gst='git status'
+alias scs='rsync -pr --delete --stats --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
 
 function fp() {
     echo `pwd`/"$1"

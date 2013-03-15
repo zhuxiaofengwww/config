@@ -254,11 +254,12 @@ Bundle 'indexer.tar.gz'
 Bundle 'vimprj'
 Bundle 'DfrankUtil'
 Bundle 'godlygeek/tabular.git'
+Bundle 'shawncplus/phpcomplete.vim.git'
 
 
 " Flake8
 autocmd BufWritePost *.py call Flake8()
-let g:flake8_ignore = "E128,E221,E501"
+let g:flake8_ignore = "E126,E127,E128,E221,E501"
 
 
 " Tagbar
@@ -277,7 +278,7 @@ let Tlist_Use_Right_Window        = 0
 
 
 " Doxygen Toolkit
-let g:DoxygenToolkit_authorName        = "Qingyuan Zhang"
+let g:DoxygenToolkit_authorName        = "Qingyuan Zhang (miccrun@gmail.com)"
 let g:DoxygenToolkit_briefTag_funcName = "yes"
 let g:doxygen_enhanced_color           = 1
 
@@ -336,6 +337,7 @@ highlight PmenuSel guibg=lightgrey guifg=black
 let g:ctrlp_map           = '<C-o>'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 set wildignore            +=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+map <C-i> :CtrlPMRU<CR>
 
 
 
@@ -346,6 +348,7 @@ map <silent> <leader>f  :Grep<CR>
 map <silent> <leader>M  :Matrix<CR>
 map <silent> <leader>m  :make<CR>:cw<CR>
 map <silent> <leader>n  :noh<CR>
+map <silent> <leader>l  :set list!<CR>
 map <silent> <leader>w  :w<CR>
 map <silent> <leader>q  :qall<CR>
 map <silent> <leader>y  "+y

@@ -27,8 +27,8 @@ map l gt
 map <C-H> :tabmove! -1<CR>
 map <C-L> :tabmove! +1<CR>
 
-map , :back<CR>
-map . :forward<CR>
+map ,, :back<CR>
+map .. :forward<CR>
 
 noremap gi gi<C-e>
 map e :history<CR>

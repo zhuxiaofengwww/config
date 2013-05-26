@@ -30,8 +30,8 @@ alias pht='python -m SimpleHTTPServer'
 alias p8='ping 8.8.8.8'
 alias pingp='ping 192.168.1.148'
 alias gst='git status'
-alias scs='rsync -pr --delete --stats --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
-alias scsp='rsync -pru --delete --stats --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
+alias scs='rsync -vpr --progress --delete --stats --exclude "*/.git/" --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
+alias scsp='rsync -vpru --progress --delete --stats --exclude "*/.git/" --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
 
 function fp() {
     echo `pwd`/"$1"

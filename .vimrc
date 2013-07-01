@@ -116,7 +116,8 @@ if has('syntax')
     syntax on
 endif
 
-
+set colorcolumn=80
+highlight ColorColumn ctermbg=lightgrey guibg=slategrey
 
 " =========
 " GUI

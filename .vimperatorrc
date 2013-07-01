@@ -1,13 +1,13 @@
 ﻿
 "******* Options ******
 
-set nextpattern='\s*下一页|下一张|下一篇|下一頁|下页|后一页|后页\s*','\bNext Page\b','^Next [>»]','^Next »','\bnext\b',^>$,'^(>>|»)$','^(>|»)','(>|»)$','\bmore\b'
-set previouspattern='\s*上一页|上一张|上一篇|上一頁|上页|前一页|前页\s*','\bPrevious Page\b','[<«] Prev$','« Prev$','\bprev(ious)\b',^<$,'^(<<|«)$','^(<|«)','(<|«)$'
+set nextpattern='\s*下一页|下一章|下一张|下一篇|下一頁|下页|后一页|后页\s*','\bNext Page\b','^Next [>»]','^Next »','\bnext\b',^>$,'^(>>|»)$','^(>|»)','(>|»)$','\bmore\b'
+set previouspattern='\s*上一页|上一章|上一张|上一篇|上一頁|上页|前一页|前页\s*','\bPrevious Page\b','[<«] Prev$','« Prev$','\bprev(ious)\b',^<$,'^(<<|«)$','^(<|«)','(<|«)$'
 set titlestring='Mozilla Firefox'
 set animations=true
 set focuscontent=true
 
-autocmd LocationChange .* js modes.passAllKeys = /www\.towords\.com|(music\.google\.com|mail\.google\.com|www\.google\.com\/reader|www\.google\.com\/calendar|twitter\.com)/.test(buffer.URL)
+autocmd LocationChange .* js modes.passAllKeys = /www\.towords\.com|cloud\.feedly\.com|(music\.google\.com|mail\.google\.com|www\.google\.com\/reader|www\.google\.com\/calendar|twitter\.com)/.test(buffer.URL)
 autocmd LocationChange .* echo ""
 
 style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;} 

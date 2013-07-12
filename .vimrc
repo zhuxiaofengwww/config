@@ -345,7 +345,8 @@ map <C-i> :CtrlPMRU<CR>
 " =================
 " Keyboard Bindings
 " =================
-map <silent> <leader>f  :Grep<CR>
+map <silent> <leader>T  :TagbarToggle<CR>
+map <silent> <leader>f  :Rgrep<CR>
 map <silent> <leader>M  :Matrix<CR>
 map <silent> <leader>m  :make<CR>:cw<CR>
 map <silent> <leader>n  :noh<CR>

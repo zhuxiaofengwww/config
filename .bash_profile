@@ -1,6 +1,6 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/mysql/bin:/usr/local/sbin:$PATH"
 
 alias cdd='cd ~/Downloads/'
 alias cdb='cd ~/Dropbox/'

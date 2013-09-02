@@ -114,10 +114,15 @@ if has('syntax')
 
     " Enable syntax highlight
     syntax on
+
+    " Hightlight Trailing whitespace
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+
 endif
 
 set colorcolumn=80
-highlight ColorColumn ctermbg=lightgrey guibg=slategrey
+highlight ColorColumn guibg=slategrey
 
 " =========
 " GUI
@@ -260,7 +265,7 @@ Bundle 'shawncplus/phpcomplete.vim.git'
 
 " Flake8
 autocmd BufWritePost *.py call Flake8()
-let g:flake8_ignore = "E126,E127,E128,E221,E501"
+let g:flake8_ignore = "E123,E126,E127,E128,E221,E501"
 
 
 " Tagbar
@@ -292,7 +297,7 @@ map <leader>dc $a<TAB><TAB><TAB><TAB><TAB>/**  */<Left><Left><Left>
 " WinManager
 let g:NERDTree_title         = '[NERD Tree]'
 let g:winManagerWindowLayout = 'NERDTree'
-let g:winManagerWidth        = 30
+let g:winManagerWidth        = 40
 let g:defaultExplorer        = 0
 
 function! NERDTree_Start()

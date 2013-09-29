@@ -36,14 +36,14 @@ function fp() {
 if [[ "$OSTYPE" == "darwin"* ]]; then
     alias cr='~/Documents/conf/cr.sh'
 
-    export VAGRANT_PATH="/Users/zqy/Documents/projects/purple_team/scripts/vagrant/"
+    export VG_PATH="/Users/zqy/Documents/projects/purple_team/scripts/vagrant/"
     function vg() {
         if [ $1 ]; then
-            pushd $VAGRANT_PATH > /dev/null;
+            pushd $VG_PATH > /dev/null;
             vagrant $@;
             popd > /dev/null;
         else
-            pushd $VAGRANT_PATH > /dev/null;
+            pushd $VG_PATH > /dev/null;
         fi
     }
 

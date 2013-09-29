@@ -1,38 +1,56 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH="/usr/local/mysql/bin:/usr/local/sbin:$PATH"
+
+alias ll='ls -alhF'
+alias df='df -h'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -p'
+alias du='du -c -h'
+alias duh='du -h -d 1'
+
+alias ..='cd ..'
+alias pht='python -m SimpleHTTPServer'
+alias p8='ping 8.8.8.8'
+alias gst='git status'
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    alias ls='ls -F --color=auto'
+    alias listen='netstat -tulnp'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ls='ls -F -G'
+    alias listen='lsof -i -P |grep LISTEN'
+fi
 
 alias cdd='cd ~/Downloads/'
 alias cdb='cd ~/Dropbox/'
 alias cdw='cd ~/Dropbox/Work'
 alias cds='cd ~/Dropbox/Study'
-alias ..='cd ..'
-
-alias grep='grep --color=auto'
-
-alias ls='ls -F -G'
-alias ll='ls -alhF'
-
-alias df='df -h'
-alias du='du -c -h'
-alias duh='du -h -d 1'
-alias listen='lsof -i -P |grep LISTEN'
-
-alias mkdir='mkdir -p'
 
 alias sshm='ssh -p 11024 -4 root@micbase.com'
-alias sshp='ssh pi@192.168.1.148'
-alias sshmi='ssh -p 32957 -4 root@milee.me'
-alias ssh4='ssh root@parkinson-16.wot.eecs.northwestern.edu'
+alias sshmu='ssh qzw056@murphy.wot.eecs.northwestern.edu'
 
-alias cr='~/Documents/conf/cr.sh'
-alias pht='python -m SimpleHTTPServer'
-alias p8='ping 8.8.8.8'
-alias pingp='ping 192.168.1.148'
-alias gst='git status'
-alias scs='rsync -vpr --progress --delete --stats --exclude "*/.git/" --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
-alias scsp='rsync -vpru --progress --delete --stats --exclude "*/.git/" --exclude "*.pyc" ~/FBdownload/scalable_sentiment/* download@social3.ece.northwestern.edu:/home/download/sc/'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias cr='~/Documents/conf/cr.sh'
+fi
 
 function fp() {
     echo `pwd`/"$1"
 }
+
+
+export VAGRANT_PATH="/Users/zqy/Documents/projects/purple_team/scripts/vagrant/"
+function vg() {
+    if [ $1 ]; then
+        pushd $VAGRANT_PATH > /dev/null;
+        vagrant $@;
+        popd > /dev/null;
+    else
+        pushd $VAGRANT_PATH > /dev/null;
+    fi
+}
+
+
+# Setting PATH for Python 3.3
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
+export PATH

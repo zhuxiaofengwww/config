@@ -27,7 +27,6 @@ alias cdw='cd ~/Dropbox/Work'
 alias cds='cd ~/Dropbox/Study'
 
 alias sshm='ssh -p 11024 -4 root@micbase.com'
-alias sshmu='ssh qzw056@murphy.wot.eecs.northwestern.edu'
 
 function fp() {
     echo `pwd`/"$1"
@@ -35,8 +34,9 @@ function fp() {
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     alias cr='~/Documents/conf/cr.sh'
+    alias cdp='cd ~/Documents/projects/'
 
-    export VG_PATH="/Users/zqy/Documents/projects/purple_team/scripts/vagrant/"
+    export VG_PATH="/Users/zqy/Documents/projects/brewer/scripts/vagrant/"
     function vg() {
         if [ $1 ]; then
             pushd $VG_PATH > /dev/null;
@@ -46,10 +46,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             pushd $VG_PATH > /dev/null;
         fi
     }
-
-
-    # Setting PATH for Python 3.3
-    # The orginal version is saved in .bash_profile.pysave
-    PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
-    export PATH
 fi

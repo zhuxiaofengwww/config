@@ -9,19 +9,19 @@ endf
 " Environmental Settings
 " ======================
 
-" Set Mapleader 
-let mapleader = ","
+" Set Mapleader
+let mapleader=","
 
 " Sets how many lines of history VIM can remember
-set history =500
+set history=500
 
 " Line Control
 set linebreak
 set nocompatible
 
 " Tab Page
-set tabpagemax  =9
-set showtabline =0
+set tabpagemax=9
+set showtabline=0
 
 " No sound on errors
 set noerrorbells
@@ -33,27 +33,27 @@ set number
 set ruler
 
 " Status bar
-set laststatus =2 " Always show the statusline
+set laststatus=2 " Always show the statusline
 set wildmenu       " Enable command line completion
 
 " Search
 set hlsearch      " Highlight search things
 set magic         " Set magic on, for regular expressions
 set showmatch     " Show matching bracets when text indicator is over them
-set matchtime =2 " How many tenths of a second to blink
+set matchtime=2 " How many tenths of a second to blink
 set incsearch
 set ignorecase
 set smartcase
 
 " Tab
-set tabstop     =4
-set shiftwidth  =4
-set softtabstop =4
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set smarttab
 
 " Show command keys in the status line
-set showcmd 
+set showcmd
 
 " Indent
 set autoindent
@@ -64,10 +64,10 @@ set wrap
 set autoread
 
 " Smart Backspace
-set backspace =indent,eol,start
+set backspace=indent,eol,start
 
 " Have the mouse enabled all the time
-set mouse =a
+set mouse=a
 
 " No Backup
 set nobackup
@@ -75,12 +75,12 @@ set nowritebackup
 set noswapfile
 
 " Omni Complete
-set complete    =.,w,b,k,t,i
-set completeopt =menuone,menu,longest
+set complete=.,w,b,k,t,i
+set completeopt=menuone,menu,longest
 
 " Code Folding
-set foldmethod  =indent
-set foldlevel   =99 " Default no folding
+set foldmethod=indent
+set foldlevel=99 " Default no folding
 
 
 
@@ -88,13 +88,13 @@ set foldlevel   =99 " Default no folding
 " Multi-Bytes
 " ===========
 if has("multi_byte")
-    set encoding       =utf-8
-    set fileencodings  =utf-8,gbk,chinese,latin1
-    set formatoptions  +=mM
+    set encoding=utf-8
+    set fileencodings=utf-8,gbk,chinese,latin1
+    set formatoptions+=mM
     set nobomb " No Unicode BOM
 
     if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
-        set ambiwidth =double
+        set ambiwidth=double
     endif
 else
     echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
@@ -132,34 +132,34 @@ if has('gui_running')
     set cursorline
 
     " Number of pixel lines to use between characters
-    set linespace =2
+    set linespace=2
 
     " Under Linux/Unix etc.
     if has("unix") && !has('mac')
-        set guifont =Courier\ 10\ Pitch\ 11
+        set guifont=Courier\ 10\ Pitch\ 11
     endif
 
     " Under the Mac(MacVim)
     if has("mac")
         " Set the font in MacVim
-        set guifont =Monaco:h14
+        set guifont=Monaco:h14
 
         " Windows size and transparency
-        set lines        =200 columns =240
-        set transparency =2
+        set lines=200 columns=240
+        set transparency=2
 
         " Use Native Fullscreen of MacVim
-        let s:lines   =&lines
-        let s:columns =&columns
+        let s:lines=&lines
+        let s:columns=&columns
 
         func! FullScreenEnter()
-            set lines =999 columns =999
+            set lines=999 columns=999
             set fullscreen
         endf
 
         func! FullScreenLeave()
-            let &lines   =s:lines
-            let &columns =s:columns
+            let &lines=s:lines
+            let &columns=s:columns
             set nofullscreen
         endf
 
@@ -172,10 +172,10 @@ if has('gui_running')
         endf
 
         " Toggle to Fullscreen
-        map <leader>ff  :call FullScreenToggle()<CR>
+        map <leader>ff :call FullScreenToggle()<CR>
 
-        set guioptions -=m
-        set guioptions -=T
+        set guioptions-=m
+        set guioptions-=T
 
         " Set input method off
         set imdisable
@@ -191,36 +191,43 @@ if has("autocmd")
     filetype plugin indent on
 
     " Set fileformat to UNIX
-    autocmd FileType php,javascript,phtml,html,css,python,vim,vimwiki set fileformat =unix
+    autocmd FileType php,javascript,phtml,html,css,python,vim,vimwiki,jade,coffee set fileformat=unix
 
     " C++ Support
     "autocmd FileType cpp set tags+=~/.vim/tags/cpp
-    set tags +=~/.vim/tags/cpp
+    set tags+=~/.vim/tags/cpp
 
     " Python Support
-    autocmd FileType python set makeprg ="python -u %"
+    autocmd FileType python set makeprg="python -u %"
     autocmd FileType python imap <silent> <buffer> . .<C-X><C-O>
 
     " JavaScript Support
-    autocmd BufRead,BufNewFile *.js set filetype =javascript
-    autocmd FileType javascript set omnifunc =javascriptcomplete#CompleteJS
-    autocmd FileType tpl,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss =1
+    autocmd BufRead,BufNewFile *.js set filetype=javascript
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType tpl,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss=1
+
+
+    " Jade Support
+    autocmd BufRead,BufNewFile *.jade set filetype=jade syntax=jade
+
+    " CoffeeScript Support
+    autocmd BufRead,BufNewFile *.coffee set filetype=coffee syntax=coffee
 
     " PHP Support
-    autocmd BufNewFile,BufRead *.php set filetype =php
+    autocmd BufNewFile,BufRead *.php set filetype=php
     autocmd FileType php set omnifunc =phpcomplete#CompletePHP
 
-    let php_sql_query     =1
-    let php_htmlInStrings =1
+    let php_sql_query=1
+    let php_htmlInStrings=1
 
     " CSS3 Syntax Highlight
-    autocmd BufRead,BufNewFile *.css set filetype =css syntax =css3
+    autocmd BufRead,BufNewFile *.css set filetype=css syntax=css3
 
     " HTML Syntax Highlight
-    autocmd BufNewFile,BufRead *.htm set filetype   =html
-    autocmd BufNewFile,BufRead *.html set filetype  =html
-    autocmd BufNewFile,BufRead *.phtml set filetype =html
-    autocmd BufNewFile,BufRead *.tpl set filetype   =html
+    autocmd BufNewFile,BufRead *.htm set filetype=html
+    autocmd BufNewFile,BufRead *.html set filetype=html
+    autocmd BufNewFile,BufRead *.phtml set filetype=html
+    autocmd BufNewFile,BufRead *.tpl set filetype=html
 endif
 
 
@@ -232,6 +239,7 @@ endif
 " Vundle
 "filetype off
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'miccrun/AutoComplPop'
@@ -252,7 +260,7 @@ Bundle 'kana/vim-fakeclip.git'
 Bundle 'nvie/vim-flake8.git'
 Bundle 'pangloss/vim-javascript.git'
 Bundle 'uguu-org/vim-matrix-screensaver.git'
-Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'Lokaltog/powerline.git'
 Bundle 'miccrun/winmanager--Fox'
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim.git'
@@ -261,11 +269,13 @@ Bundle 'vimprj'
 Bundle 'DfrankUtil'
 Bundle 'godlygeek/tabular.git'
 Bundle 'shawncplus/phpcomplete.vim.git'
+Bundle 'digitaltoad/vim-jade.git'
+Bundle 'kchmck/vim-coffee-script'
 
 
 " Flake8
 autocmd BufWritePost *.py call Flake8()
-let g:flake8_ignore = "E123,E126,E127,E128,E221,E501"
+let g:flake8_ignore="E123,E126,E127,E128,E221,E501"
 
 
 " Tagbar

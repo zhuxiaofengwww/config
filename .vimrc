@@ -123,6 +123,7 @@ endif
 
 set colorcolumn=80
 highlight ColorColumn guibg=slategrey
+set t_Co=256
 
 " =========
 " GUI
@@ -200,12 +201,12 @@ if has("autocmd")
     " Python Support
     autocmd FileType python set makeprg="python -u %"
     autocmd FileType python imap <silent> <buffer> . .<C-X><C-O>
+    autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4
 
     " JavaScript Support
     autocmd BufRead,BufNewFile *.js set filetype=javascript
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType tpl,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss=1
-
 
     " Jade Support
     autocmd BufRead,BufNewFile *.jade set filetype=jade syntax=jade
@@ -216,6 +217,7 @@ if has("autocmd")
     " PHP Support
     autocmd BufNewFile,BufRead *.php set filetype=php
     autocmd FileType php set omnifunc =phpcomplete#CompletePHP
+    autocmd FileType php set tabstop=4 shiftwidth=4 softtabstop=4
 
     let php_sql_query=1
     let php_htmlInStrings=1
@@ -228,6 +230,10 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.html set filetype=html
     autocmd BufNewFile,BufRead *.phtml set filetype=html
     autocmd BufNewFile,BufRead *.tpl set filetype=html
+
+    " Web Development Indentation
+    autocmd FileType tpl,phtml,html,htm,javascript,coffee,css set tabstop=2 shiftwidth=2 softtabstop=2
+
 endif
 
 
@@ -271,6 +277,7 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'shawncplus/phpcomplete.vim.git'
 Bundle 'digitaltoad/vim-jade.git'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/syntastic'
 
 
 " Flake8
@@ -354,6 +361,9 @@ let g:ctrlp_map           = '<C-o>'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 set wildignore            +=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 map <C-i> :CtrlPMRU<CR>
+
+" Syntastic
+let g:syntastic_javascript_checkers = ['jshint']
 
 
 

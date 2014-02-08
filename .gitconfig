@@ -1,0 +1,18 @@
+[user]
+	name = Michael Chang
+	email = miccrun@gmail.com
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[pull]
+	rebase = true
+[push]
+	default = current
+[core]
+  editor = /usr/bin/vim
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

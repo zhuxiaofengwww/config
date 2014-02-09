@@ -1,6 +1,9 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+#Powerline Settings
+. ~/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
+
 alias ll='ls -alhF'
 alias df='df -h'
 alias grep='grep --color=auto'

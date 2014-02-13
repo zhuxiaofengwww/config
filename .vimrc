@@ -192,7 +192,7 @@ if has("autocmd")
     filetype plugin indent on
 
     " Set fileformat to UNIX
-    autocmd FileType php,javascript,phtml,html,css,python,vim,vimwiki,jade,coffee set fileformat=unix
+    autocmd FileType php,javascript,uhtml,phtml,html,css,python,vim,vimwiki,jade,coffee set fileformat=unix
 
     " C++ Support
     "autocmd FileType cpp set tags+=~/.vim/tags/cpp
@@ -206,7 +206,7 @@ if has("autocmd")
     " JavaScript Support
     autocmd BufRead,BufNewFile *.js set filetype=javascript
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType tpl,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss=1
+    autocmd FileType tpl,uhtml,phtml,html,htm,javascript let g:javascript_enable_domhtmlcss=1
 
     " Jade Support
     autocmd BufRead,BufNewFile *.jade set filetype=jade syntax=jade
@@ -228,11 +228,12 @@ if has("autocmd")
     " HTML Syntax Highlight
     autocmd BufNewFile,BufRead *.htm set filetype=html
     autocmd BufNewFile,BufRead *.html set filetype=html
+    autocmd BufNewFile,BufRead *.uhtml set filetype=html
     autocmd BufNewFile,BufRead *.phtml set filetype=html
     autocmd BufNewFile,BufRead *.tpl set filetype=html
 
     " Web Development Indentation
-    autocmd FileType tpl,phtml,html,htm,javascript,coffee,css set tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType tpl,uhtml,phtml,html,htm,javascript,coffee,css set tabstop=2 shiftwidth=2 softtabstop=2
 
 endif
 

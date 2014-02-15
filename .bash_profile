@@ -30,6 +30,7 @@ alias cdw='cd ~/Dropbox/Work'
 alias cds='cd ~/Dropbox/Study'
 
 alias sshm='ssh -p 11024 -4 root@micbase.com'
+alias sshp='ssh pi@192.168.1.148'
 
 function fp() {
     echo `pwd`/"$1"

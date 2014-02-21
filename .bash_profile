@@ -16,7 +16,7 @@ alias pht='python -m SimpleHTTPServer'
 alias p8='ping 8.8.8.8'
 alias gst='git status'
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     alias ls='ls -F --color=auto'
     alias listen='netstat -tulnp'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
